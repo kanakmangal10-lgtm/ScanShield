@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Email Guard Dashboard - AI-powered email threat analysis and real-time phishing detection monitoring system">
+  <title>Email Guard – Threat Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ═══ SIDEBAR NAV ═══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="brand-text">Email Guard</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-view="dashboard" id="nav-dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-view="reports" id="nav-reports">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span>Reports</span>
+      </a>
+      <a href="#" class="nav-item" data-view="workflow" id="nav-workflow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Workflow</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="status-indicator">
+        <span class="status-dot pulse"></span>
+        <span class="status-text">Monitoring Active</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ─── DASHBOARD VIEW ─── -->
+    <section class="view active" id="view-dashboard">
+      <header class="view-header">
+        <div>
+          <h1>Threat Dashboard</h1>
+          <p class="subtitle">Real-time email threat monitoring & analysis</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-ghost" id="btn-refresh" title="Refresh data">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat-card stat-total">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="stat-body">
+            <span class="stat-value" id="stat-total">–</span>
+            <span class="stat-label">Emails Analyzed</span>
+          </div>
+        </div>
+        <div class="stat-card stat-high">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="stat-body">
+            <span class="stat-value" id="stat-high">–</span>
+            <span class="stat-label">High Risk</span>
+          </div>
+        </div>
+        <div class="stat-card stat-suspicious">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <div class="stat-body">
+            <span class="stat-value" id="stat-suspicious">–</span>
+            <span class="stat-label">Suspicious</span>
+          </div>
+        </div>
+        <div class="stat-card stat-safe">
+          <div class="stat-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="stat-body">
+            <span class="stat-value" id="stat-low">–</span>
+            <span class="stat-label">Low / Safe</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Row -->
+      <div class="charts-row">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h2>Threat Timeline</h2>
+            <span class="card-badge">Last 7 Days</span>
+          </div>
+          <div class="chart-container" id="timeline-chart"></div>
+        </div>
+        <div class="card chart-card chart-card-small">
+          <div class="card-header">
+            <h2>Risk Distribution</h2>
+          </div>
+          <div class="donut-container" id="donut-chart"></div>
+          <div class="donut-legend" id="donut-legend"></div>
+        </div>
+      </div>
+
+      <!-- Recent Threats -->
+      <div class="card">
+        <div class="card-header">
+          <h2>Recent Threats</h2>
+          <a href="#" class="link-btn" id="view-all-reports">View all →</a>
+        </div>
+        <div class="table-wrapper">
+          <table class="data-table" id="recent-threats-table">
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Sender</th>
+                <th>Subject</th>
+                <th>Risk Score</th>
+                <th>Time</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="recent-threats-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── REPORTS VIEW ─── -->
+    <section class="view" id="view-reports">
+      <header class="view-header">
+        <div>
+          <h1>Analysis Reports</h1>
+          <p class="subtitle">Complete email threat analysis history</p>
+        </div>
+        <div class="header-actions">
+          <div class="search-box" id="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Search sender, subject..." id="search-input">
+          </div>
+          <div class="filter-chips" id="filter-chips">
+            <button class="chip active" data-filter="ALL" id="filter-all">All</button>
+            <button class="chip" data-filter="HIGH RISK" id="filter-high">High Risk</button>
+            <button class="chip" data-filter="SUSPICIOUS" id="filter-suspicious">Suspicious</button>
+            <button class="chip" data-filter="LOW SIGNALS DETECTED" id="filter-low">Low</button>
+            <button class="chip" data-filter="UNKNOWN" id="filter-unknown">Unknown</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="reports-list" id="reports-list"></div>
+    </section>
+
+    <!-- ─── WORKFLOW VIEW ─── -->
+    <section class="view" id="view-workflow">
+      <header class="view-header">
+        <div>
+          <h1>n8n Workflow Pipeline</h1>
+          <p class="subtitle">Email Guard analysis pipeline stages</p>
+        </div>
+      </header>
+      <div class="workflow-pipeline" id="workflow-pipeline"></div>
+    </section>
+
+    <!-- ─── DETAIL MODAL ─── -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal" id="report-modal">
+        <button class="modal-close" id="modal-close" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="modal-body" id="modal-body"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
